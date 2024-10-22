@@ -1,0 +1,18 @@
+variables:
+  asocApiKeyId: 'xxxxxxxxxxxxxx'
+  asocApiKeySecret: 'xxxxxxxxxxxxxx'
+  asocAppName: $CI_PROJECT_NAME
+  serviceUrl: 'cloud.appscan.com'
+  assetGroupId: 'xxxxxxxxxxxxxx'
+  scanName: $CI_PROJECT_NAME-$CI_JOB_ID
+  sevSecGw: 'criticalIssues'
+  maxIssuesAllowed: 100
+
+include:
+  - remote: 'https://raw.githubusercontent.com/alexhcl/gitlab-asoc/main/yaml/appscanasoc_scan_sast.yaml'
+
+stages:
+- scan-sast
+
+scan-job:
+  stage: scan-sast
